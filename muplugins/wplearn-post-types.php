@@ -19,6 +19,7 @@ function wplearn_post_types()
       'singular_name' => 'Event'
     ],
     'menu_icon' => 'dashicons-calendar-alt',
+    'has_archive' => true,
   ]);
 }
 
