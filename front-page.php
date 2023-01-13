@@ -1,7 +1,5 @@
 <?php get_header(); ?>
 
-</style>
-
 <div class="page-banner">
   <div class="page-banner__bg-image"
     style="background-image: url(<?php echo get_theme_file_uri('/images/library-hero.jpg') ?>);"></div>
@@ -50,37 +48,37 @@
     <div class="full-width-split__inner">
       <h2 class="headline headline--small-plus t-center">From Our Blogs</h2>
 
+      <?php
+      $homePagePosts = new WP_Query(array(
+        'posts_per_page' => 2
+      ));
+      while ($homePagePosts->have_posts()) {
+        $homePagePosts->the_post(); ?>
       <div class="event-summary">
-        <a class="event-summary__date event-summary__date--beige t-center" href="#">
-          <span class="event-summary__month">Jan</span>
-          <span class="event-summary__day">20</span>
+        <a class="event-summary__date event-summary__date--beige t-center" href="<?php the_permalink(); ?>">
+          <span class="event-summary__month"><?php the_time('M'); ?></span>
+          <span class="event-summary__day"><?php the_time('d'); ?></span>
         </a>
         <div class="event-summary__content">
-          <h5 class="event-summary__title headline headline--tiny"><a href="#">We Were Voted Best School</a>
+          <h5 class="event-summary__title headline headline--tiny"><a
+              href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
           </h5>
-          <p>For the 100th year in a row we are voted #1. <a href="#" class="nu gray">Read more</a></p>
-        </div>
-      </div>
-      <div class="event-summary">
-        <a class="event-summary__date event-summary__date--beige t-center" href="#">
-          <span class="event-summary__month">Feb</span>
-          <span class="event-summary__day">04</span>
-        </a>
-        <div class="event-summary__content">
-          <h5 class="event-summary__title headline headline--tiny"><a href="#">Professors in the National
-              Spotlight</a></h5>
-          <p>Two of our professors have been in national news lately. <a href="#" class="nu gray">Read
+          <p><?php echo wp_trim_words(get_the_content(), 15) ?> <a href="<?php the_permalink(); ?>" class="nu gray">Read
               more</a></p>
         </div>
       </div>
+      <?php }
+      wp_reset_postdata(); ?>
 
-      <p class="t-center no-margin"><a href="#" class="btn btn--yellow">View All Blog Posts</a></p>
+      <p class="t-center no-margin"><a href="<?php echo site_url('/blog'); ?>" class="btn btn--yellow">View All Blog
+          Posts</a></p>
     </div>
   </div>
 </div>
 <!--
 <div class="hero-slider">
-  <div class="hero-slider__slide" style="background-image: url(<?php echo get_theme_file_uri('/images/bus.jpg') ?>);">
+  <div class="hero-slider__slide" style="background-image: url(<?php //echo get_theme_file_uri('/images/bus.jpg') 
+                                                                ?>);">
     <div class="hero-slider__interior container">
       <div class="hero-slider__overlay">
         <h2 class="headline headline--medium t-center">Free Transportation</h2>
@@ -90,7 +88,8 @@
     </div>
   </div>
   <div class="hero-slider__slide"
-    style="background-image: url(<?php echo get_theme_file_uri('/images/apples.jpg') ?>);">
+    style="background-image: url(<?php //echo get_theme_file_uri('/images/apples.jpg') 
+                                  ?>);">
     <div class="hero-slider__interior container">
       <div class="hero-slider__overlay">
         <h2 class="headline headline--medium t-center">An Apple a Day</h2>
@@ -99,7 +98,8 @@
       </div>
     </div>
   </div>
-  <div class="hero-slider__slide" style="background-image: url(<?php echo get_theme_file_uri('/images/bread.jpg') ?>);">
+  <div class="hero-slider__slide" style="background-image: url(<?php //echo get_theme_file_uri('/images/bread.jpg') 
+                                                                ?>);">
     <div class="hero-slider__interior container">
       <div class="hero-slider__overlay">
         <h2 class="headline headline--medium t-center">Free Food</h2>
@@ -111,6 +111,4 @@
 </div>
 -->
 
-<?php get_footer();
-
-?>
+<?php get_footer(); ?>
