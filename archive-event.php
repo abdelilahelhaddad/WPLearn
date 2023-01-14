@@ -1,6 +1,5 @@
 <?php get_header(); ?>
 
-</style>
 
 <div class="page-banner">
   <div class="page-banner__bg-image"
