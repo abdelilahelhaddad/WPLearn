@@ -18,7 +18,6 @@ add_action('wp_enqueue_scripts', 'wplearn_scripts');
 function wplearn_setup()
 {
     register_nav_menus([
-        'main-menu' => 'Main Menu',
         'footer-menu-explore' => 'Footer Menu Explore',
         'footer-menu-learn' => 'Footer Menu Learn',
     ]);
@@ -26,3 +25,23 @@ function wplearn_setup()
 }
 
 add_action('after_setup_theme', 'wplearn_setup');
+
+function wplearn_adjust_events_queries($query)
+{
+    if (!is_admin() and is_post_type_archive('event') and is_main_query()) {
+        $today = date('Ymd');
+        $query->set('meta_key', 'event_date');
+        $query->set('orderby', 'meta_value_num');
+        $query->set('order', 'ASC');
+        $query->set('meta_query', [
+            [
+                'key' => 'event_date',
+                'compare' => '>=',
+                'value' => $today,
+                'type' => 'numeric'
+            ]
+        ]);
+    }
+}
+
+add_action('pre_get_posts', 'wplearn_adjust_events_queries');

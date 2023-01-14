@@ -24,7 +24,7 @@
         'posts_per_page' => 2,
         'post_type' => 'event',
         'meta_key' => 'event_date',
-        'order_by' => 'meta_value_num',
+        'orderby' => 'meta_value_num',
         'order' => 'ASC',
         'meta_query' => [
           [
