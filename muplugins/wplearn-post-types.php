@@ -43,7 +43,7 @@ function wplearn_post_types()
   //Professor Post Type
   register_post_type('professor', [
     'supports' => [
-      'title', 'editor'
+      'title', 'editor', 'thumbnail'
     ],
     'public' => true,
     'labels' => [
