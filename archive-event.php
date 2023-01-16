@@ -1,5 +1,9 @@
 <?php get_header(); ?>
 
+<?php pageBanner([
+  'title' => 'All Events',
+  'subtitle' => 'archive-event.php Whats going on bro?',
+]); ?>
 
 <div class="page-banner">
   <div class="page-banner__bg-image"

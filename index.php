@@ -1,6 +1,9 @@
 <?php get_header(); ?>
 
-</style>
+<?php pageBanner([
+  'title' => 'Welcome To Our Blog!',
+  'subtitle' => 'index.php Lorem ipsum, dolor sit amet consectetur adipisicing.',
+]); ?>
 
 <div class="page-banner">
   <div class="page-banner__bg-image"

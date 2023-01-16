@@ -5,11 +5,54 @@ if (!defined('_S_VERSION')) {
     define('_S_VERSION', microtime());
 }
 
+function pageBanner($args = NULL)
+{
+    if (!isset($args['title'])) {
+        $args['title'] = get_the_title();
+    }
+    if (!isset($args['subtitle'])) {
+        $args['subtitle'] = get_field('page_banner_subtitle');
+    }
+    if (!isset($args['photo'])) {
+        if (get_field('page_banner_background_image')) {
+            $args['photo'] = get_field('page_banner_background_image')['sizes']['pageBanner'];
+        } else {
+            $args['photo'] = get_theme_file_uri('/images/ocean.jpg');
+        }
+    }
+?>
+<div class="page-banner">
+  <div class="page-banner__bg-image" style="background-image: url(<?php echo $args['photo']; ?>)">
+  </div>
+  <div class="container page-banner__content container--narrow">
+    <h1 class="page-banner__title"><?php echo $args['title']; ?></h1>
+    <div class="page-banner__intro">
+      <p><?php echo $args['subtitle']; ?></p>
+    </div>
+  </div>
+</div>
+
+<?php } ?>
+
+<?php
+
 function wplearn_scripts()
 {
     wp_enqueue_script('main-wplearn-js', get_template_directory_uri() . '/js/scripts-bundled.js', [], _S_VERSION, true);
-    wp_enqueue_style('google-font', '//fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i|Roboto:100,300,400,400i,700,700i', [], _S_VERSION, 'all');
-    wp_enqueue_style('font_awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', [], _S_VERSION, 'all');
+    wp_enqueue_style(
+        'google-font',
+        '//fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i|Roboto:100,300,400,400i,700,700i',
+        [],
+        _S_VERSION,
+        'all'
+    );
+    wp_enqueue_style(
+        'font_awesome',
+        '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
+        [],
+        _S_VERSION,
+        'all'
+    );
     wp_enqueue_style('wplearn_style', get_template_directory_uri() . '/style.css', [], _S_VERSION, 'all');
 }
 

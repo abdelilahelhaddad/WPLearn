@@ -1,6 +1,9 @@
 <?php get_header(); ?>
+<?php pageBanner([
 
-</style>
+  'title' => 'Past Events',
+  'subtitle' => 'page-past-events.php A recap of our past events.',
+]); ?>
 
 <div class="page-banner">
   <div class="page-banner__bg-image"
