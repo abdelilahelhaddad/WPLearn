@@ -39,6 +39,7 @@ function pageBanner($args = NULL)
 function wplearn_scripts()
 {
     wp_enqueue_script('main-wplearn-js', get_template_directory_uri() . '/js/scripts-bundled.js', [], _S_VERSION, true);
+    wp_enqueue_script('search-wplearn-js', get_template_directory_uri() . '/js/search.js', [], _S_VERSION, true);
     wp_enqueue_style(
         'google-font',
         '//fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i|Roboto:100,300,400,400i,700,700i',
