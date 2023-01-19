@@ -55,6 +55,9 @@ function wplearn_scripts()
         'all'
     );
     wp_enqueue_style('wplearn_style', get_template_directory_uri() . '/style.css', [], _S_VERSION, 'all');
+    wp_localize_script('search-wplearn-js', 'wplearnData', array(
+        'root_url' => get_site_url()
+    ));
 }
 
 add_action('wp_enqueue_scripts', 'wplearn_scripts');

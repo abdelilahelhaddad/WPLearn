@@ -48,8 +48,8 @@ class Search {
 
   getResults() {
     $.when(
-      $.getJSON(universityData.root_url + '/wp-json/wp/v2/posts?search=' + this.searchField.val()),
-      $.getJSON(universityData.root_url + '/wp-json/wp/v2/pages?search=' + this.searchField.val())
+      $.getJSON(wplearnData.root_url + '/wp-json/wp/v2/posts?search=' + this.searchField.val()),
+      $.getJSON(wplearnData.root_url + '/wp-json/wp/v2/pages?search=' + this.searchField.val())
     ).then((posts, pages) => {
       var combinedResults = posts[0].concat(pages[0]);
       this.resultsDiv.html(`
@@ -80,14 +80,12 @@ class Search {
     $("body").addClass("body-no-scroll");
     this.searchField.val('');
     setTimeout(() => this.searchField.focus(), 301);
-    console.log("our open method just ran!");
     this.isOverlayOpen = true;
   }
 
   closeOverlay() {
     this.searchOverlay.removeClass("search-overlay--active");
     $("body").removeClass("body-no-scroll");
-    console.log("our close method just ran!");
     this.isOverlayOpen = false;
   }
 

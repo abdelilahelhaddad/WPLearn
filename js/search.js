@@ -116,7 +116,7 @@ var Search = /*#__PURE__*/function () {
     key: "getResults",
     value: function getResults() {
       var _this = this;
-      jquery__WEBPACK_IMPORTED_MODULE_0___default().when(jquery__WEBPACK_IMPORTED_MODULE_0___default().getJSON(universityData.root_url + '/wp-json/wp/v2/posts?search=' + this.searchField.val()), jquery__WEBPACK_IMPORTED_MODULE_0___default().getJSON(universityData.root_url + '/wp-json/wp/v2/pages?search=' + this.searchField.val())).then(function (posts, pages) {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default().when(jquery__WEBPACK_IMPORTED_MODULE_0___default().getJSON(wplearnData.root_url + '/wp-json/wp/v2/posts?search=' + this.searchField.val()), jquery__WEBPACK_IMPORTED_MODULE_0___default().getJSON(wplearnData.root_url + '/wp-json/wp/v2/pages?search=' + this.searchField.val())).then(function (posts, pages) {
         var combinedResults = posts[0].concat(pages[0]);
         _this.resultsDiv.html("\n        <h2 class=\"search-overlay__section-title\">General Information</h2>\n        ".concat(combinedResults.length ? '<ul class="link-list min-list">' : '<p>No general information matches that search.</p>', "\n          ").concat(combinedResults.map(function (item) {
           return "<li><a href=\"".concat(item.link, "\">").concat(item.title.rendered, "</a></li>");
@@ -146,7 +146,6 @@ var Search = /*#__PURE__*/function () {
       setTimeout(function () {
         return _this2.searchField.focus();
       }, 301);
-      console.log("our open method just ran!");
       this.isOverlayOpen = true;
     }
   }, {
@@ -154,7 +153,6 @@ var Search = /*#__PURE__*/function () {
     value: function closeOverlay() {
       this.searchOverlay.removeClass("search-overlay--active");
       jquery__WEBPACK_IMPORTED_MODULE_0___default()("body").removeClass("body-no-scroll");
-      console.log("our close method just ran!");
       this.isOverlayOpen = false;
     }
   }, {
