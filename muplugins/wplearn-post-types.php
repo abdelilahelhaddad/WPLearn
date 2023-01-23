@@ -55,6 +55,21 @@ function wplearn_post_types()
     ],
     'menu_icon' => 'dashicons-welcome-learn-more',
   ]);
+  //SlideShow Post Type
+  register_post_type('slideshow', [
+    'supports' => [
+      'title',
+    ],
+    'public' => true,
+    'labels' => [
+      'name' => 'Slideshows',
+      'add_new_item' => 'Add New Slideshow',
+      'edit_item' => 'Edit Slideshow',
+      'all_items' => 'All Slideshows',
+      'singular_name' => 'Slideshow'
+    ],
+    'menu_icon' => 'dashicons-slides',
+  ]);
 }
 
 add_action('init', 'wplearn_post_types');
